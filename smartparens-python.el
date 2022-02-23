@@ -78,10 +78,14 @@ triggered while typing a function definition"
 
 (sp-with-modes 'python-mode
   (sp-local-pair "'" "'" :unless '(sp-in-comment-p sp-in-string-quotes-p) :post-handlers '(:add sp-python-fix-tripple-quotes))
+  (sp-local-pair "f'" "'")
   (sp-local-pair "\"" "\"" :post-handlers '(:add sp-python-fix-tripple-quotes))
+  (sp-local-pair "f\"" "\"")
   (sp-local-pair "'''" "'''")
+  (sp-local-pair "f'''" "'''")
   (sp-local-pair "\\'" "\\'")
   (sp-local-pair "\"\"\"" "\"\"\"")
+  (sp-local-pair "f\"\"\"" "\"\"\"")
   (sp-local-pair "(" ")" :post-handlers '(:add sp-python-maybe-add-colon-python)))
 
 (defun sp-python-fix-tripple-quotes (id action _context)
